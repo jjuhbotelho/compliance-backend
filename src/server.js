@@ -1,4 +1,5 @@
 const Express = require('express');
+const setupRouter = require('./setup/router');
 const setupDatabase = require('./setup/database');
 const setupMiddleware = require('./setup/middleware');
 
@@ -20,7 +21,11 @@ setupMiddleware(app);
 setupDatabase()  
 
   //Application only starts if database connection is set
-  .then(() => { 
+  .then((client) => {
+
+    //This grants access to the database using the client as second parameter
+    setupRouter(app, client);
+
     //Setting up for application listen port 5000
     app.listen(port, () => {
       console.log(`Application is listing on port: ${port}`)
