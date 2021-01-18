@@ -18,18 +18,16 @@ app.get('/', (req, res) => {
 
 setupMiddleware(app);
 
-setupDatabase()  
+async function start() {
+  const db = await setupDatabase();
 
-  //Application only starts if database connection is set
-  .then((client) => {
+  setupRouter(app, db);
 
-    //This grants access to the database using the client as second parameter
-    setupRouter(app, client);
+  //Setting up for application listen port 5000
+  app.listen(port, () => {
+    console.log(`Application is listing on port: ${port}`)
+  });
+}
 
-    //Setting up for application listen port 5000
-    app.listen(port, () => {
-      console.log(`Application is listing on port: ${port}`)
-    });
-  })
-  .catch(console.error);
+start().catch(console.error);
 
