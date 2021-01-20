@@ -1,3 +1,4 @@
+const Config = require('./config')
 const Express = require('express');
 const setupRouter = require('./setup/router');
 const setupDatabase = require('./setup/database');
@@ -24,8 +25,8 @@ async function start() {
   setupRouter(app, db);
 
   //Setting up for application listen port 5000
-  app.listen(port, () => {
-    console.log(`Application is listing on port: ${port}`)
+  app.listen(Config.port, () => {
+    console.log('Server started on port', Config.port)
   });
 }
 
