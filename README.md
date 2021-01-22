@@ -41,7 +41,7 @@ Entre na página de sua votação e clique em "Ver Resultados"
 
 ## Banco de Dados
 
-- Para utilizar o banco de dados basta seguir as intruções dadas na documentação do Atlas
+- Para utilizar o banco de dados basta seguir as intruções dadas na documentação do [Atlas](https://docs.atlas.mongodb.com/getting-started)
 - No final, insira dentro do index.js de config, o código para conexão como no exemplo:
 
 ```bash
